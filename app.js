@@ -2,11 +2,26 @@ const express = require('express')
 const app = express()
 const port = 3000
 
-// time use
-app.use((req, res, next) => {
-  const dateObject = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
 
-  console.log(dateObject, `|`, req.method, `from`, req.url )
+app.use((req, res, next) => {
+  // const dateReq = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
+  const dateReqObject = new Date()
+  const reqData = new Date().toLocaleString()
+  const reqMs = dateReqObject.getMilliseconds()
+  const reqTime = `${reqData}:${reqMs}`
+
+  console.log(`request time: ${reqTime} | ${req.method} from ${req.url}`)
+
+  res.on('finish', () => {
+    const dateResObject = new Date()
+    const resData = new Date().toLocaleString()
+    const resMs = dateResObject.getMilliseconds()
+    const resTime = `${resData}:${resMs}`
+    const totalTime = resMs - reqMs
+    
+    console.log(`request time: ${reqTime} | response time:${resTime} | ${req.method} from ${req.url} | total time: ${totalTime}ms`)
+  })
+  
   next()
 })
 
