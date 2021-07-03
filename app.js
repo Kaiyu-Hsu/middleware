@@ -2,6 +2,14 @@ const express = require('express')
 const app = express()
 const port = 3000
 
+// time use
+app.use((req, res, next) => {
+  const dateObject = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
+
+  console.log(dateObject, `|`, req.method, `from` )
+  next()
+})
+
 app.get('/', (req, res) => {
   res.send('列出全部 Todo')
 })
@@ -19,5 +27,5 @@ app.post('/', (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log(`App running on port ${port}`)
+  console.log(`App running on port http://localhost:${port}`)
 })
