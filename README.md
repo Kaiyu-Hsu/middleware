@@ -5,7 +5,10 @@
 - URL
 
 ### Q2: 伺服器回應的時間
-- 承Q1，加入伺服器回應時間的total time
+能留下兩次時間戳記 (time-stamps)，分別為：
+
+(1) 伺服器收到請求的時間戳記，如 2019-5-17 18:51:12
+(2) 伺服器送出回應的時間，2019-5-17 18:59:23
 
 ## 工具 Tools
 - [Visual Studio Code](https://visualstudio.microsoft.com/zh-hant/) - 開發環境
