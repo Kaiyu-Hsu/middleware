@@ -6,7 +6,7 @@ const port = 3000
 app.use((req, res, next) => {
   const dateObject = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
 
-  console.log(dateObject, `|`, req.method, `from` )
+  console.log(dateObject, `|`, req.method, `from`, req.url )
   next()
 })
 
