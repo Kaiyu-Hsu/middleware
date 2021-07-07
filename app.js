@@ -10,7 +10,7 @@ app.use((req, res, next) => {
   const reqMs = dateReqObject.getMilliseconds()
   const reqTime = `${reqData}:${reqMs}`
 
-  console.log(`request time: ${reqTime} | ${req.method} from ${req.url}`)
+  console.log(`${reqData} | ${req.method} from ${req.url}`)
 
   res.on('finish', () => {
     const dateResObject = new Date()
@@ -19,7 +19,7 @@ app.use((req, res, next) => {
     const resTime = `${resData}:${resMs}`
     const totalTime = resMs - reqMs
     
-    console.log(`request time: ${reqTime} | response time:${resTime} | ${req.method} from ${req.url} | total time: ${totalTime}ms`)
+    console.log(`${resData} | ${req.method} from ${req.url} | total time: ${totalTime}ms`)
   })
   
   next()
